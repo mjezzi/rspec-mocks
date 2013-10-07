@@ -18,6 +18,7 @@ Breaking Changes for 3.0.0:
 * Make `at_least(0)` raise an error. (Sam Phippen)
 * Remove support for `require 'spec/mocks'` which had been kept
   in place for backwards compatibility with rspec 1 (Myron Marston).
+* Blocks provided to `with` are always used as implementation (Xavier Shay).
 
 Enhancements:
 
@@ -47,6 +48,12 @@ Bug Fixes:
   singleton class ancestors. (Marc-André Lafortune, Myron Marston)
 * Fix issue where unstubing methods on "any instances" would not
   remove stubs on existing instances (Jon Rowe)
+* When generating an error message for unexpected arguments,
+  use `#inspect` rather than `#description` if `#description`
+  returns `nil` or `''` so that you still get a useful message.
+  (Nick DeLuca)
+* Fix issue with receive(:message) do ... end precedence preventing
+  the usage of modifications (`and_return` etc) (Jon Rowe)
 
 ### 2.14.3 / 2013-08-08
 [full changelog](http://github.com/rspec/rspec-mocks/compare/v2.14.2...v2.14.3)
